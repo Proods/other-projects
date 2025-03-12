@@ -1,0 +1,24 @@
+package eng2.[%=microservice.name.replace("-microservice","").replace("-",".")%]s.dto;
+
+import io.micronaut.serde.annotation.Serdeable;
+
+
+@Serdeable
+public class [%=dto.name%] {
+
+	[%for (attr in dto.attributes) {%]
+	private [%=attr.dataType.name%] [%=attr.name%];
+
+	[%}%]
+	
+	[%for (attr in dto.attributes) {%]
+	public [%=attr.dataType.name%] get[%=attr.name.firstToUpperCase()%]() {
+		return [%=attr.name%];
+	}
+
+	public void set[%=attr.name.firstToUpperCase()%]([%=attr.dataType.name%] [%=attr.name%]) {
+		this.[%=attr.name%] = [%=attr.name%];
+	}
+
+	[%}%]	
+}

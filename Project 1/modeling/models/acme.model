@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="Y3898670" xmi:id="_SsunALPkEe6-vr_8_hjGpA">
+  <microservices xmi:id="_UMyEgLPkEe6-vr_8_hjGpA" name="video-microservice">
+    <domains xmi:id="_aZ5HALPkEe6-vr_8_hjGpA" name="User">
+      <attributes xmi:id="_h8YBALPkEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_iNdxALPkEe6-vr_8_hjGpA" name="name" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_ibzH8LPkEe6-vr_8_hjGpA" name="uploads" dataType="_sFeX8LPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_iv3TcLPkEe6-vr_8_hjGpA" name="likedVids" dataType="_sFeX8LPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_jr-9cLPkEe6-vr_8_hjGpA" name="dislikedVids" dataType="_sFeX8LPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_j-S1cLPkEe6-vr_8_hjGpA" name="views" dataType="_sFeX8LPkEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <domains xmi:id="_AYu1wLPlEe6-vr_8_hjGpA" name="Video">
+      <attributes xmi:id="_BhvsQLPlEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_BxYDsLPlEe6-vr_8_hjGpA" name="creator" dataType="_LLyvsLPlEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_B-ggwLPlEe6-vr_8_hjGpA" name="title" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_CKBNMLPlEe6-vr_8_hjGpA" name="hashtags" dataType="_IovkILPlEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_CcCxULPlEe6-vr_8_hjGpA" name="likes" dataType="_XWl4oLPlEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_CqD_MLPlEe6-vr_8_hjGpA" name="dislikes" dataType="_LLyvsLPlEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_C2WuwLPlEe6-vr_8_hjGpA" name="viewers" dataType="_XWl4oLPlEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <domains xmi:id="_vu6uYLPlEe6-vr_8_hjGpA" name="Hashtag">
+      <attributes xmi:id="_MtwcQLPmEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_NAJMwLPmEe6-vr_8_hjGpA" name="name" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_NM-H0LPmEe6-vr_8_hjGpA" name="videos" dataType="_sFeX8LPkEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <dtos xmi:id="_jkwCILPmEe6-vr_8_hjGpA" name="UserDTO" domain="_aZ5HALPkEe6-vr_8_hjGpA">
+      <attributes xmi:id="_mqRBkLPmEe6-vr_8_hjGpA" name="name" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+    </dtos>
+    <dtos xmi:id="_sUINELPmEe6-vr_8_hjGpA" name="VideoDTO" domain="_AYu1wLPlEe6-vr_8_hjGpA">
+      <attributes xmi:id="_vY0GELPmEe6-vr_8_hjGpA" name="title" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_wMnhkLPmEe6-vr_8_hjGpA" name="hashtags" dataType="_3jQ_ALPmEe6-vr_8_hjGpA" modifier="private"/>
+    </dtos>
+    <repositories xmi:id="_AxFZcLPnEe6-vr_8_hjGpA" name="UsersRepository" domain="_aZ5HALPkEe6-vr_8_hjGpA"/>
+    <repositories xmi:id="_EtT-cLPnEe6-vr_8_hjGpA" name="VideosRepository" domain="_AYu1wLPlEe6-vr_8_hjGpA"/>
+    <repositories xmi:id="_I_vc8LPnEe6-vr_8_hjGpA" name="HashtagsRepository" domain="_vu6uYLPlEe6-vr_8_hjGpA"/>
+    <producers xmi:id="_TLb04LPnEe6-vr_8_hjGpA" name="UsersProducer">
+      <events xmi:id="_YtqHULPnEe6-vr_8_hjGpA" name="createUser" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_hRuaILPnEe6-vr_8_hjGpA">
+        <key xmi:id="_m7rFMLPnEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_paG2gLPnEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_uIuhwLPnEe6-vr_8_hjGpA" name="deleteUser" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_yLUNcLPnEe6-vr_8_hjGpA">
+        <key xmi:id="_Y4C88LPoEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_cVIH0LPoEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+    </producers>
+    <producers xmi:id="_9dUtMLPnEe6-vr_8_hjGpA" name="VideosProducer">
+      <events xmi:id="_H80x8LPoEe6-vr_8_hjGpA" name="postVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_VNUXoLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_hIX0YLPoEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_k4-YMLPoEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_xylH4LPoEe6-vr_8_hjGpA" name="updateVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_15w_sLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_bDLiULPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_brh7wLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_yDc1cLPoEe6-vr_8_hjGpA" name="deleteVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_6GmMgLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_cCCXQLPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_caNmsLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_FiPJYLPpEe6-vr_8_hjGpA" name="watchVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_7SVm4LPoEe6-vr_8_hjGpA">
+        <key xmi:id="_cvprMLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_dDLEILPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_G-Y-ULPpEe6-vr_8_hjGpA" name="likeVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_8f_s0LPoEe6-vr_8_hjGpA">
+        <key xmi:id="_dtDuoLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_eAzxELPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_HOZwQLPpEe6-vr_8_hjGpA" name="dislikeVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_95aW0LPoEe6-vr_8_hjGpA">
+        <key xmi:id="_eUQ4kLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_epUikLPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_HevSULPpEe6-vr_8_hjGpA" name="removeLike" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_-6VBQLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_e_TZoLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_fUp-kLPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_Hu51QLPpEe6-vr_8_hjGpA" name="removeDislike" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="__7FToLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_fpjQgLPpEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_f-EvALPpEe6-vr_8_hjGpA" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+    </producers>
+    <producers xmi:id="_-sAb8LPpEe6-vr_8_hjGpA" name="HashtagsProducer">
+      <events xmi:id="_ANJekLPqEe6-vr_8_hjGpA" name="createHashtag" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_MNMJALPqEe6-vr_8_hjGpA">
+        <key xmi:id="_dAmb0LPqEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_dTXm0LPqEe6-vr_8_hjGpA" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_Abe1gLPqEe6-vr_8_hjGpA" name="deleteHashtag" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_Mt_wALPqEe6-vr_8_hjGpA">
+        <key xmi:id="_dkxf4LPqEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_d6qQULPqEe6-vr_8_hjGpA" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_An12gLPqEe6-vr_8_hjGpA" name="topHashtags" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_Olmx4LPqEe6-vr_8_hjGpA">
+        <key xmi:id="_eOzUULPqEe6-vr_8_hjGpA" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <value xmi:id="_ei7xQLPqEe6-vr_8_hjGpA" name="numOfLikes" dataType="_1Z9zYLPqEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_A3yXALPqEe6-vr_8_hjGpA" name="addHashtagVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_QQaG0LPqEe6-vr_8_hjGpA">
+        <key xmi:id="_e3wxwLPqEe6-vr_8_hjGpA" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <value xmi:id="_fMcBQLPqEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_BFI2gLPqEe6-vr_8_hjGpA" name="removeHashtagVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_RSFmQLPqEe6-vr_8_hjGpA">
+        <key xmi:id="_fhCYQLPqEe6-vr_8_hjGpA" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <value xmi:id="_f1eXMLPqEe6-vr_8_hjGpA" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+    </producers>
+    <controllers xmi:id="_zx3-wLPrEe6-vr_8_hjGpA" name="UsersController" path="/users">
+      <attributes xmi:id="_3hpcILPrEe6-vr_8_hjGpA" name="usersRepo" dataType="_hTpI4LPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_3u7qMLPrEe6-vr_8_hjGpA" name="videosRepo" dataType="_kIcLwLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_365poLPrEe6-vr_8_hjGpA" name="hashtagRepo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_4IyUoLPrEe6-vr_8_hjGpA" name="usersProducer" dataType="_mpyuMLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_4Vc3oLPrEe6-vr_8_hjGpA" name="videosProducer" dataType="_nHO4ILPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_4ivFsLPrEe6-vr_8_hjGpA" name="hashtagsProducer" dataType="_oJm7ILPrEe6-vr_8_hjGpA" modifier="none"/>
+      <methods xmi:id="_Jgx7MLPsEe6-vr_8_hjGpA" name="findHashtagByName" dataType="_stOswLPqEe6-vr_8_hjGpA" modifier="private">
+        <paramters xmi:id="_UCZf0LPsEe6-vr_8_hjGpA" name="hashtag" dataType="_qkV8YLPkEe6-vr_8_hjGpA"/>
+      </methods>
+      <methods xmi:id="_J3WoILPsEe6-vr_8_hjGpA" name="checkIfHashtagExists" dataType="_Pj7wcLPsEe6-vr_8_hjGpA" modifier="private">
+        <paramters xmi:id="_UtgSULPsEe6-vr_8_hjGpA" name="hashtag" dataType="_qkV8YLPkEe6-vr_8_hjGpA"/>
+      </methods>
+      <resources xmi:id="_cPkVkLPsEe6-vr_8_hjGpA" name="list" dataType="_f1ghgLPsEe6-vr_8_hjGpA" path="/"/>
+      <resources xmi:id="_qHRFMLPsEe6-vr_8_hjGpA" name="createUser" dataType="_14KgYLPsEe6-vr_8_hjGpA" httpMethod="POST" path="/">
+        <paramters xmi:id="_PO2b0LPtEe6-vr_8_hjGpA" name="userDetails" dataType="_aj0wALPtEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_qa9dQLPsEe6-vr_8_hjGpA" name="getUser" dataType="_LLyvsLPlEe6-vr_8_hjGpA" path="/{id}">
+        <paramters xmi:id="_QWjqwLPtEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_qrvEMLPsEe6-vr_8_hjGpA" name="updateUser" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/{id}">
+        <paramters xmi:id="_R8VVwLPtEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_SK5WMLPtEe6-vr_8_hjGpA" name="userDetails" dataType="_aj0wALPtEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_q8v7sLPsEe6-vr_8_hjGpA" name="deleteUser" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="DELETE" path="/{id}">
+        <paramters xmi:id="_S4mwwLPtEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_rufsQLPtEe6-vr_8_hjGpA" name="getUploads" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/{id}/uploads">
+        <paramters xmi:id="_h9TpkLPuEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_sAGZoLPtEe6-vr_8_hjGpA" name="getViewedVideos" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/{id}/views">
+        <paramters xmi:id="_iLfPgLPuEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_sQRjoLPtEe6-vr_8_hjGpA" name="getLikedVideos" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/{id}/likes">
+        <paramters xmi:id="_iZOwkLPuEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_sgDsELPtEe6-vr_8_hjGpA" name="getDislikedVideos" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/{id}/dislikes">
+        <paramters xmi:id="_ioGTALPuEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_HQK4kLPuEe6-vr_8_hjGpA" name="createVideo" dataType="_14KgYLPsEe6-vr_8_hjGpA" httpMethod="POST" path="/{id}/videos">
+        <paramters xmi:id="_vaeZULPuEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_vpz10LPuEe6-vr_8_hjGpA" name="videoDetails" dataType="_2mukoLPuEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_HhaZkLPuEe6-vr_8_hjGpA" name="updateVideo" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/{creator_id}/videos/{video_id}">
+        <paramters xmi:id="_w4YhwLPuEe6-vr_8_hjGpA" name="creator_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_xIpLULPuEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_xWNtQLPuEe6-vr_8_hjGpA" name="videoDetails" dataType="_2mukoLPuEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_HyHvELPuEe6-vr_8_hjGpA" name="deleteVideo" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="DELETE" path="/{creator_id}/videos/{video_id}">
+        <paramters xmi:id="_xk3NQLPuEe6-vr_8_hjGpA" name="creator_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_xw_kwLPuEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+    </controllers>
+    <controllers xmi:id="_NJPvULPvEe6-vr_8_hjGpA" name="VideosController" path="/videos">
+      <attributes xmi:id="_QQRxsLPvEe6-vr_8_hjGpA" name="videosRepo" dataType="_kIcLwLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_Qd3hwLPvEe6-vr_8_hjGpA" name="usersRepo" dataType="_hTpI4LPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_QpnewLPvEe6-vr_8_hjGpA" name="videosProducer" dataType="_nHO4ILPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_Q1IyQLPvEe6-vr_8_hjGpA" name="hashtagsProducer" dataType="_oJm7ILPrEe6-vr_8_hjGpA" modifier="none"/>
+      <resources xmi:id="_ghDRgLPvEe6-vr_8_hjGpA" name="list" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/"/>
+      <resources xmi:id="_mSrR4LPvEe6-vr_8_hjGpA" name="getVideo" dataType="_n5wBkLPoEe6-vr_8_hjGpA" path="/{id}">
+        <paramters xmi:id="_vqsxMLPvEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_sqERwLPvEe6-vr_8_hjGpA" name="getViewers" dataType="_f1ghgLPsEe6-vr_8_hjGpA" path="/{id}/viewers">
+        <paramters xmi:id="_DjjK8LPwEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_tLyewLPvEe6-vr_8_hjGpA" name="getLikes" dataType="_f1ghgLPsEe6-vr_8_hjGpA" path="/{id}/likes">
+        <paramters xmi:id="_DyQ8YLPwEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_tdpDwLPvEe6-vr_8_hjGpA" name="getDislikes" dataType="_f1ghgLPsEe6-vr_8_hjGpA" path="/{id}/dislikes">
+        <paramters xmi:id="_EC-R4LPwEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_OZQwQLPwEe6-vr_8_hjGpA" name="addView" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/{video_id}/viewers/{viewer_id}">
+        <paramters xmi:id="_9woUoLPwEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_-UG1ILPwEe6-vr_8_hjGpA" name="viewer_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_OrvAULPwEe6-vr_8_hjGpA" name="addLike" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/{video_id}/likes/{viewer_id}">
+        <paramters xmi:id="_ASIoELPxEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_AfknILPxEe6-vr_8_hjGpA" name="viewer_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_O-Rh0LPwEe6-vr_8_hjGpA" name="addDislike" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/{video_id}/dislikes/{viewer_id}">
+        <paramters xmi:id="_A2JUELPxEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_BCwMsLPxEe6-vr_8_hjGpA" name="viewer_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_PPDIwLPwEe6-vr_8_hjGpA" name="removeLike" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="DELETE" path="/{video_id}/likes/{viewer_id}">
+        <paramters xmi:id="_BQjYILPxEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_BdqnELPxEe6-vr_8_hjGpA" name="viewer_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_Pfh0wLPwEe6-vr_8_hjGpA" name="removeDislike" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="DELETE" path="/{video_id}/dislikes/{viewer_id}">
+        <paramters xmi:id="_Bsd4ELPxEe6-vr_8_hjGpA" name="video_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_B-ZVkLPxEe6-vr_8_hjGpA" name="viewer_id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+    </controllers>
+    <controllers xmi:id="_YmtmQLPxEe6-vr_8_hjGpA" name="HashtagsController" path="/hashtags">
+      <attributes xmi:id="_c742wLPxEe6-vr_8_hjGpA" name="repo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <resources xmi:id="_iZiLMLPxEe6-vr_8_hjGpA" name="list" dataType="_wJpFELPxEe6-vr_8_hjGpA" path="/"/>
+      <resources xmi:id="_jtdRMLPxEe6-vr_8_hjGpA" name="getHashtag" dataType="_stOswLPqEe6-vr_8_hjGpA" path="/{id}">
+        <paramters xmi:id="_-4EBULPxEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_j-2jMLPxEe6-vr_8_hjGpA" name="getHashtagVideos" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/{id}/videos">
+        <paramters xmi:id="_BhSGULPyEe6-vr_8_hjGpA" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+      </resources>
+    </controllers>
+  </microservices>
+  <microservices xmi:id="_JstkwLP0Ee6P_qTOxLzOhg" name="trending-hashtag-microservice">
+    <domains xmi:id="_Q2RocLP0Ee6P_qTOxLzOhg" name="Hashtag">
+      <attributes xmi:id="_ThtT8LP0Ee6P_qTOxLzOhg" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_TxWScLP0Ee6P_qTOxLzOhg" name="name" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_T9xk4LP0Ee6P_qTOxLzOhg" name="numOfLikes" dataType="_1Z9zYLPqEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <repositories xmi:id="_leb_QLP0Ee6P_qTOxLzOhg" name="HashtagsRepository" domain="_Q2RocLP0Ee6P_qTOxLzOhg"/>
+    <consumers xmi:id="_5iN2oLP0Ee6P_qTOxLzOhg" name="HashtagsConsumer" groupId="trending-hashtags">
+      <attributes xmi:id="_-HZ5ELP0Ee6P_qTOxLzOhg" name="repo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <events xmi:id="_CTzoELP1Ee6P_qTOxLzOhg" name="trendingHashtag" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_Hx-g8LP1Ee6P_qTOxLzOhg" singletons="_zxy6sLP1Ee6P_qTOxLzOhg">
+        <key xmi:id="_W-tw4LP1Ee6P_qTOxLzOhg" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <value xmi:id="_XcGQcLP1Ee6P_qTOxLzOhg" name="numOfLikes" dataType="_1Z9zYLPqEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_ClHagLP1Ee6P_qTOxLzOhg" name="deleteHashtag" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_Mt_wALPqEe6-vr_8_hjGpA">
+        <key xmi:id="_X1MF4LP1Ee6P_qTOxLzOhg" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_YI8vYLP1Ee6P_qTOxLzOhg" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+    </consumers>
+    <streams xmi:id="_oaVTMLP1Ee6P_qTOxLzOhg" name="HashtagsStream">
+      <attributes xmi:id="_p_ujsLP1Ee6P_qTOxLzOhg" name="serdeRegistry" dataType="_sPAesLP1Ee6P_qTOxLzOhg" modifier="private"/>
+      <singletons xmi:id="_zxy6sLP1Ee6P_qTOxLzOhg" name="trendingHashtag" dataType="_662oELP1Ee6P_qTOxLzOhg" applicationId="top-hashtags" publisher="_Olmx4LPqEe6-vr_8_hjGpA" subscriber="_Hx-g8LP1Ee6P_qTOxLzOhg"/>
+    </streams>
+    <controllers xmi:id="_Sfn58LP2Ee6P_qTOxLzOhg" name="TrendingHashtagsController" path="/trending-hashtags">
+      <attributes xmi:id="_VxWwcLP2Ee6P_qTOxLzOhg" name="repo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <methods xmi:id="_ZsH84LP2Ee6P_qTOxLzOhg" name="iterableToList" dataType="_dsieULP2Ee6P_qTOxLzOhg" modifier="private">
+        <paramters xmi:id="_gPpUQLP2Ee6P_qTOxLzOhg" name="iterable" dataType="_hsV7wLP2Ee6P_qTOxLzOhg"/>
+      </methods>
+      <resources xmi:id="_pHCywLP2Ee6P_qTOxLzOhg" name="getTrendingHashtags" dataType="_wJpFELPxEe6-vr_8_hjGpA" path="/"/>
+    </controllers>
+  </microservices>
+  <microservices xmi:id="_RpKH0LP9Ee6L3P_12geqow" name="subscription-microservice">
+    <domains xmi:id="_YOLUALP9Ee6L3P_12geqow" name="User">
+      <attributes xmi:id="_aRAucLP9Ee6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_a8MZcLP9Ee6L3P_12geqow" name="subscriptions" dataType="_IovkILPlEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <domains xmi:id="_o61ekLP9Ee6L3P_12geqow" name="Video">
+      <attributes xmi:id="_sKWHgLP9Ee6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_sXKbgLP9Ee6L3P_12geqow" name="title" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_sk1EELP9Ee6L3P_12geqow" name="likes" dataType="_1Z9zYLPqEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_syyAgLP9Ee6L3P_12geqow" name="hashtags" dataType="_IovkILPlEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <domains xmi:id="_CV7Y4LP-Ee6L3P_12geqow" name="Hashtag">
+      <attributes xmi:id="_F5Hy0LP-Ee6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_GFUbwLP-Ee6L3P_12geqow" name="name" dataType="_qkV8YLPkEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_GVQ8QLP-Ee6L3P_12geqow" name="subscribers" dataType="_XWl4oLPlEe6-vr_8_hjGpA" modifier="private"/>
+      <attributes xmi:id="_GoQwwLP-Ee6L3P_12geqow" name="videos" dataType="_sFeX8LPkEe6-vr_8_hjGpA" modifier="private"/>
+    </domains>
+    <repositories xmi:id="_iKU-oLP-Ee6L3P_12geqow" name="UsersRepository" domain="_YOLUALP9Ee6L3P_12geqow"/>
+    <repositories xmi:id="_kluDALP-Ee6L3P_12geqow" name="VideosRepository" domain="_o61ekLP9Ee6L3P_12geqow"/>
+    <repositories xmi:id="_ps2U4LP-Ee6L3P_12geqow" name="HashtagsRepository" domain="_CV7Y4LP-Ee6L3P_12geqow"/>
+    <producers xmi:id="_E7FAwLP_Ee6L3P_12geqow" name="SubscriptionsProducer">
+      <events xmi:id="_HnarMLP_Ee6L3P_12geqow" name="subscribe" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_RwfM8LP_Ee6L3P_12geqow">
+        <key xmi:id="_doeuoLP_Ee6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_eR6tMLP_Ee6L3P_12geqow" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_H6kQsLP_Ee6L3P_12geqow" name="unsubscribe" dataType="_c2ngwLPnEe6-vr_8_hjGpA" modifier="none" topic="_TLpjYLP_Ee6L3P_12geqow">
+        <key xmi:id="_esd7MLP_Ee6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_fH7vMLP_Ee6L3P_12geqow" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+    </producers>
+    <consumers xmi:id="_tLw2ULP_Ee6L3P_12geqow" name="FactoryConsumer" groupId="factory">
+      <attributes xmi:id="_vak3QLP_Ee6L3P_12geqow" name="usersRepo" dataType="_hTpI4LPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_vrvfwLP_Ee6L3P_12geqow" name="videosRepo" dataType="_kIcLwLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_v4380LP_Ee6L3P_12geqow" name="hashtagsRepo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <events xmi:id="_5QgakLP_Ee6L3P_12geqow" name="createUser" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_hRuaILPnEe6-vr_8_hjGpA">
+        <key xmi:id="_Corq4LQAEe6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_DETP4LQAEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_5jMtELP_Ee6L3P_12geqow" name="deleteUser" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_yLUNcLPnEe6-vr_8_hjGpA">
+        <key xmi:id="_DazrYLQAEe6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_DzIr0LQAEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_ObMPoLQAEe6L3P_12geqow" name="createVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_VNUXoLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_gY4kQLQAEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_gqMWsLQAEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_OtaoELQAEe6L3P_12geqow" name="updateVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_15w_sLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_g-4NQLQAEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_hX-CsLQAEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_O8SxkLQAEe6L3P_12geqow" name="deleteVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_6GmMgLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_hsgIQLQAEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+        <value xmi:id="_iDAjwLQAEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_0QGmULQAEe6L3P_12geqow" name="createHashtag" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_MNMJALPqEe6-vr_8_hjGpA">
+        <key xmi:id="_EYFWgLQBEe6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_EsJiALQBEe6L3P_12geqow" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_0ha_0LQAEe6L3P_12geqow" name="deleteHashtag" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_Mt_wALPqEe6-vr_8_hjGpA">
+        <key xmi:id="_E_riALQBEe6L3P_12geqow" name="id" dataType="_pHlDcLPkEe6-vr_8_hjGpA"/>
+        <value xmi:id="_F5W8ALQBEe6L3P_12geqow" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+      </events>
+    </consumers>
+    <consumers xmi:id="_ZUQOcLQBEe6L3P_12geqow" name="SubscriptionConsumer" groupId="subscription">
+      <attributes xmi:id="_bxXKELQBEe6L3P_12geqow" name="videosRepo" dataType="_kIcLwLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_cDMg8LQBEe6L3P_12geqow" name="hashtagsRepo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <events xmi:id="_kccq4LQBEe6L3P_12geqow" name="likeVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_8f_s0LPoEe6-vr_8_hjGpA">
+        <key xmi:id="_umNJILQBEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_u8uLsLQBEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_kz9L8LQBEe6L3P_12geqow" name="removeLike" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_-6VBQLPoEe6-vr_8_hjGpA">
+        <key xmi:id="_vbsmsLQBEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+        <value xmi:id="_w1vi0LQBEe6L3P_12geqow" name="user" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_-KpHYLQBEe6L3P_12geqow" name="addHashtagVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_QQaG0LPqEe6-vr_8_hjGpA">
+        <key xmi:id="_GwKLsLQCEe6L3P_12geqow" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <value xmi:id="_HFrvwLQCEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+      <events xmi:id="_-lfQULQBEe6L3P_12geqow" name="removeHashtagVideo" dataType="_c2ngwLPnEe6-vr_8_hjGpA" topic="_RSFmQLPqEe6-vr_8_hjGpA">
+        <key xmi:id="_JDjKoLQCEe6L3P_12geqow" name="hashtag" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <value xmi:id="_JVyxMLQCEe6L3P_12geqow" name="video" dataType="_n5wBkLPoEe6-vr_8_hjGpA"/>
+      </events>
+    </consumers>
+    <controllers xmi:id="_Thw18LQCEe6L3P_12geqow" name="Controllers" path="/">
+      <attributes xmi:id="_dLHV0LQCEe6L3P_12geqow" name="usersRepo" dataType="_hTpI4LPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_daXSwLQCEe6L3P_12geqow" name="hashtagsRepo" dataType="_k8xywLPrEe6-vr_8_hjGpA" modifier="none"/>
+      <attributes xmi:id="_dsrx0LQCEe6L3P_12geqow" name="producer" dataType="_nftyILQCEe6L3P_12geqow" modifier="none"/>
+      <methods xmi:id="_jERFELQDEe6L3P_12geqow" name="iterableToList" dataType="_dsieULP2Ee6P_qTOxLzOhg" modifier="private">
+        <paramters xmi:id="_pP6vALQDEe6L3P_12geqow" name="iterable" dataType="_hsV7wLP2Ee6P_qTOxLzOhg"/>
+      </methods>
+      <resources xmi:id="_vrruALQCEe6L3P_12geqow" name="subscribe" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/subscribe-hashtag/{hashtag_id}/subscribers/{user_id}">
+        <paramters xmi:id="_K6__ALQDEe6L3P_12geqow" name="hashtag_id" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_ScA5YLQDEe6L3P_12geqow" name="user_id" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_wEGOALQCEe6L3P_12geqow" name="unsubscribe" dataType="_A_G_oLPtEe6-vr_8_hjGpA" httpMethod="PUT" path="/unsubscribe-hashtag/{hashtag_id}/subscribers/{user_id}">
+        <paramters xmi:id="_Ssas4LQDEe6L3P_12geqow" name="hashtag_id" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_TKtycLQDEe6L3P_12geqow" name="user_id" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </resources>
+      <resources xmi:id="_wWeXcLQCEe6L3P_12geqow" name="recommend" dataType="_4zJ1YLPtEe6-vr_8_hjGpA" path="/users/{user_id}/hashtags/{hashtag_id}/recommendations">
+        <paramters xmi:id="_S8-RYLQDEe6L3P_12geqow" name="hashtag_id" dataType="_stOswLPqEe6-vr_8_hjGpA"/>
+        <paramters xmi:id="_TZ424LQDEe6L3P_12geqow" name="user_id" dataType="_LLyvsLPlEe6-vr_8_hjGpA"/>
+      </resources>
+    </controllers>
+  </microservices>
+  <topics xmi:id="_hRuaILPnEe6-vr_8_hjGpA" name="create-user"/>
+  <topics xmi:id="_yLUNcLPnEe6-vr_8_hjGpA" name="delete-user"/>
+  <topics xmi:id="_VNUXoLPoEe6-vr_8_hjGpA" name="post-video"/>
+  <topics xmi:id="_15w_sLPoEe6-vr_8_hjGpA" name="update-video"/>
+  <topics xmi:id="_6GmMgLPoEe6-vr_8_hjGpA" name="delete-video"/>
+  <topics xmi:id="_7SVm4LPoEe6-vr_8_hjGpA" name="watch-video"/>
+  <topics xmi:id="_8f_s0LPoEe6-vr_8_hjGpA" name="like-video"/>
+  <topics xmi:id="_95aW0LPoEe6-vr_8_hjGpA" name="dislike-video"/>
+  <topics xmi:id="_-6VBQLPoEe6-vr_8_hjGpA" name="remove-like"/>
+  <topics xmi:id="__7FToLPoEe6-vr_8_hjGpA" name="remove-dislike"/>
+  <topics xmi:id="_MNMJALPqEe6-vr_8_hjGpA" name="create-hashtag"/>
+  <topics xmi:id="_Mt_wALPqEe6-vr_8_hjGpA" name="delete-hashtag"/>
+  <topics xmi:id="_Olmx4LPqEe6-vr_8_hjGpA" name="top-liked-hashtags"/>
+  <topics xmi:id="_QQaG0LPqEe6-vr_8_hjGpA" name="add-hashtag-video"/>
+  <topics xmi:id="_RSFmQLPqEe6-vr_8_hjGpA" name="remove-hashtag-video"/>
+  <topics xmi:id="_Hx-g8LP1Ee6P_qTOxLzOhg" name="trending"/>
+  <topics xmi:id="_RwfM8LP_Ee6L3P_12geqow" name="subscribe-hashtag"/>
+  <topics xmi:id="_TLpjYLP_Ee6L3P_12geqow" name="unsubscribe-hashtag"/>
+  <dataTypes xmi:id="_pHlDcLPkEe6-vr_8_hjGpA" name="Long"/>
+  <dataTypes xmi:id="_1Z9zYLPqEe6-vr_8_hjGpA" name="Integer"/>
+  <dataTypes xmi:id="_qkV8YLPkEe6-vr_8_hjGpA" name="String"/>
+  <dataTypes xmi:id="_3jQ_ALPmEe6-vr_8_hjGpA" name="Set&lt;String>"/>
+  <dataTypes xmi:id="_c2ngwLPnEe6-vr_8_hjGpA" name="void"/>
+  <dataTypes xmi:id="_Pj7wcLPsEe6-vr_8_hjGpA" name="boolean"/>
+  <dataTypes xmi:id="_LLyvsLPlEe6-vr_8_hjGpA" name="User"/>
+  <dataTypes xmi:id="_XWl4oLPlEe6-vr_8_hjGpA" name="Set&lt;User>"/>
+  <dataTypes xmi:id="_f1ghgLPsEe6-vr_8_hjGpA" name="Iterable&lt;User>"/>
+  <dataTypes xmi:id="_aj0wALPtEe6-vr_8_hjGpA" name="UserDTO"/>
+  <dataTypes xmi:id="_hTpI4LPrEe6-vr_8_hjGpA" name="UsersRepository"/>
+  <dataTypes xmi:id="_mpyuMLPrEe6-vr_8_hjGpA" name="UsersProducer"/>
+  <dataTypes xmi:id="_n5wBkLPoEe6-vr_8_hjGpA" name="Video"/>
+  <dataTypes xmi:id="_sFeX8LPkEe6-vr_8_hjGpA" name="Set&lt;Video>"/>
+  <dataTypes xmi:id="_4zJ1YLPtEe6-vr_8_hjGpA" name="Iterable&lt;Video>"/>
+  <dataTypes xmi:id="_2mukoLPuEe6-vr_8_hjGpA" name="VideoDTO"/>
+  <dataTypes xmi:id="_kIcLwLPrEe6-vr_8_hjGpA" name="VideosRepository"/>
+  <dataTypes xmi:id="_nHO4ILPrEe6-vr_8_hjGpA" name="VideosProducer"/>
+  <dataTypes xmi:id="_stOswLPqEe6-vr_8_hjGpA" name="Hashtag"/>
+  <dataTypes xmi:id="_IovkILPlEe6-vr_8_hjGpA" name="Set&lt;Hashtag>"/>
+  <dataTypes xmi:id="_wJpFELPxEe6-vr_8_hjGpA" name="Iterable&lt;Hashtag>"/>
+  <dataTypes xmi:id="_k8xywLPrEe6-vr_8_hjGpA" name="HashtagsRepository"/>
+  <dataTypes xmi:id="_oJm7ILPrEe6-vr_8_hjGpA" name="HashtagsProducer"/>
+  <dataTypes xmi:id="_14KgYLPsEe6-vr_8_hjGpA" name="HttpResponse&lt;Void>"/>
+  <dataTypes xmi:id="_A_G_oLPtEe6-vr_8_hjGpA" name="HttpResponse&lt;String>"/>
+  <dataTypes xmi:id="_sPAesLP1Ee6P_qTOxLzOhg" name="SerdeRegistry"/>
+  <dataTypes xmi:id="_662oELP1Ee6P_qTOxLzOhg" name="KStream&lt;Hashtag,Integer>"/>
+  <dataTypes xmi:id="_dsieULP2Ee6P_qTOxLzOhg" name="&lt;T> List&lt;T>"/>
+  <dataTypes xmi:id="_hsV7wLP2Ee6P_qTOxLzOhg" name="Iterable&lt;T>"/>
+  <dataTypes xmi:id="_nftyILQCEe6L3P_12geqow" name="SubscriptionsProducer"/>
+</Model>

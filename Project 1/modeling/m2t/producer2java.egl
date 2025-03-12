@@ -1,0 +1,16 @@
+package eng2.[%=microservice.name.replace("-microservice","").replace("-",".")%]s.events;
+
+import io.micronaut.configuration.kafka.annotation.KafkaClient;
+import io.micronaut.configuration.kafka.annotation.KafkaKey;
+import io.micronaut.configuration.kafka.annotation.Topic;
+
+
+@KafkaClient
+public interface [%=producer.name%] {
+	
+	[%for (event in producer.events) {%]
+	@Topic("[%=event.topic.name%]")
+	public void [%=event.name%](@KafkaKey [%=event.key.dataType.name%] [%=event.key.name%], [%=event.value.dataType.name%] [%=event.value.name%]);
+
+	[%}%]
+}

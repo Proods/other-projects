@@ -1,0 +1,121 @@
+@namespace(uri="Y3898670")
+package Y3898670;
+
+class Model {
+	val Microservice[+] microservices;
+	val Topic[*] topics;
+	val DataType[*] dataTypes;
+}
+
+class Microservice {
+	attr String[1] name;
+	val Domain[*] domains;
+	val DTO[*] dtos;
+	val Repository[*] repositories;
+	val Producer[*] producers;
+	val Consumer[*] consumers;
+	val Stream[*] streams;
+	val Controller[+] controllers;	
+}
+
+// Domains
+
+class Domain extends Class {}
+
+// Repositories
+
+class Repository extends Class {
+	ref Domain[1] domain;
+}
+
+// DTOs
+
+class DTO extends Class {
+	ref Domain[1] domain;
+}
+
+// Events
+
+class Stream extends Class {
+	val Singleton[+] singletons;
+}
+
+class Singleton extends Method {
+	attr String applicationId;
+	ref Topic publisher;
+	ref Topic subscriber;
+}
+
+class Producer extends Class {
+	val Event[+] events;
+}
+
+class Consumer extends Class {
+	attr String groupId;
+	val Event[+] events;
+}
+
+class Event extends Method {
+	ref Topic[1] topic;
+	val Tag[1] key;
+	val Tag[1] value;
+	ref Singleton[*] singletons;
+}
+
+class Topic {
+	attr String[1] name;
+}
+
+// Controllers
+
+class Controller extends Class {
+	attr String[1] path;
+	val Resource[+] resources;
+}
+
+class Resource extends Method {
+	attr HttpMethod[1] httpMethod;
+	attr String[1] path;
+}
+
+enum HttpMethod {
+	GET;
+	PUT;
+	POST;
+	DELETE;
+}
+
+// Basic definitions
+
+class Class {
+	attr String[1] name;
+	val Attribute[*] attributes;
+	val Method[*] methods;
+}
+
+class Method extends Tag {
+	attr AccessModifier modifier;
+	val Paramter[*] paramters;
+}
+
+class Paramter extends Tag {}
+
+class Attribute extends Tag {
+	attr AccessModifier modifier;
+}
+
+enum AccessModifier {
+	public;
+	private;
+	protected;
+	none;
+}
+
+class Tag {
+	attr String[1] name;
+	ref DataType[1] dataType;
+}
+
+class DataType {
+	attr String[1] name;
+}

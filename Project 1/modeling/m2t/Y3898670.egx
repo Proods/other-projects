@@ -1,0 +1,73 @@
+rule Domain2Java
+	transform domain : Domain {
+
+	template : "domain2java.egl"
+
+	parameters: Map{"microservice" = domain.eContainer()}
+
+	target : dynamicPath(domain.eContainer().name) + "/domain/" + domain.name + ".java"
+}
+
+rule Repository2Java
+	transform repository : Repository {
+
+	template : "repository2java.egl"
+
+	parameters: Map{"microservice" = repository.eContainer()}
+
+	target : dynamicPath(repository.eContainer().name) + "/repositories/" + repository.name + ".java"
+}
+
+rule DTO2Java
+	transform dto : DTO {
+
+	template : "dto2java.egl"
+
+	parameters: Map{"microservice" = dto.eContainer()}
+
+	target : dynamicPath(dto.eContainer().name) + "/dto/" + dto.name + ".java"
+}
+
+rule Stream2Java
+	transform stream : Stream {
+
+	template : "stream2java.egl"
+
+	parameters: Map{"microservice" = stream.eContainer()}
+
+	target : dynamicPath(stream.eContainer().name) + "/events/" + stream.name + ".java"
+}
+
+rule Producer2Java
+	transform producer : Producer {
+
+	template : "producer2java.egl"
+
+	parameters: Map{"microservice" = producer.eContainer()}
+
+	target : dynamicPath(producer.eContainer().name) + "/events/" + producer.name + ".java"
+}
+
+rule Consumer2Java
+	transform consumer : Consumer {
+
+	template : "consumer2java.egl"
+
+	parameters: Map{"microservice" = consumer.eContainer()}
+
+	target : dynamicPath(consumer.eContainer().name) + "/events/" + consumer.name + ".java"
+}
+
+rule Controller2Java
+	transform controller : Controller {
+
+	template : "controller2java.egl"
+
+	parameters: Map{"microservice" = controller.eContainer(), "GET" = HttpMethod#GET, "PUT" = HttpMethod#PUT, "POST" = HttpMethod#POST, "DELETE" = HttpMethod#DELETE}
+
+	target : dynamicPath(controller.eContainer().name) + "/controllers/" + controller.name + ".java"
+}
+
+operation dynamicPath(str : String) : String {
+	return "../../microservices/" + str + "/src-gen/main/java/eng2/" + str.replace("-microservice","").replace("-","/") + "s";
+}

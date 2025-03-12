@@ -1,0 +1,42 @@
+package eng2.[%=microservice.name.replace("-microservice","").replace("-",".")%]s.events;
+
+import java.util.Properties;
+
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.Consumed;
+import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.Produced;
+
+import io.micronaut.configuration.kafka.streams.ConfiguredStreamBuilder;
+import io.micronaut.context.annotation.Factory;
+import jakarta.inject.Singleton;
+
+
+@Factory
+public class [%=stream.name%] {
+	
+	[%for (attr in stream.attributes) {%]
+	private [%=attr.dataType.name%] [%=attr.name%];
+
+	[%}%]
+	
+	[%for (singleton in stream.singletons) {%]
+	@Singleton
+	public [%=singleton.dataType.name%] [%=singleton.name%](ConfiguredStreamBuilder builder){
+		
+	}
+
+	[%}%]
+	[%for (method in stream.methods) {%]
+	private [%=method.dataType.name%] [%=method.name%]([%var temp = "" ;
+	for (param in method.paramters) {
+		temp = temp + param.dataType.name + " " + param.name + ", ";
+	}
+	if (method.paramters.notEmpty()) {
+		temp = temp.substring(0,temp.length()-2);
+	}%][%=temp%]) {
+
+	}
+
+	[%}%]
+}

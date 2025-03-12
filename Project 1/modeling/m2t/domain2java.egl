@@ -1,0 +1,31 @@
+package eng2.[%=microservice.name.replace("-microservice","").replace("-",".")%]s.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import io.micronaut.serde.annotation.Serdeable;
+
+
+@Entity
+@Serdeable
+public class [%=domain.name%] {
+	
+	[%for (attr in domain.attributes) {%]
+	[%if (attr.name=="id") {%]
+	@Id
+	[%}%]
+	private [%=attr.dataType.name%] [%=attr.name%];
+
+	[%}%]	
+	
+	[%for (attr in domain.attributes) {%]
+	public [%=attr.dataType.name%] get[%=attr.name.firstToUpperCase()%]() {
+		return [%=attr.name%];
+	}
+
+	public void set[%=attr.name.firstToUpperCase()%]([%=attr.dataType.name%] [%=attr.name%]) {
+		this.[%=attr.name%] = [%=attr.name%];
+	}
+
+	[%}%]
+}

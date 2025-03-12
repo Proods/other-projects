@@ -1,0 +1,41 @@
+package eng2.[%=microservice.name.replace("-microservice","").replace("-",".")%]s.controllers;
+
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
+
+
+@Controller("[%=controller.path%]")
+public class [%=controller.name%] {
+	
+	[%for (attr in controller.attributes) {%]
+	private [%=attr.dataType.name%] [%=attr.name%];
+
+	[%}%]
+	
+	[%for (resource in controller.resources) {%]
+	@[%var HTTP = ""; switch (resource.httpMethod) { case GET : HTTP = "Get"; case PUT : HTTP = "Put"; case POST : HTTP = "Post"; case DELETE : HTTP = "Delete";}%][%=HTTP%]("[%=resource.path%]")
+	public [%=resource.dataType.name%] [%=resource.name%]([%var temp = "" ;
+	for (param in resource.paramters) {
+		temp = temp + param.dataType.name + " " + param.name + ", ";
+	}
+	if (resource.paramters.notEmpty()) {
+		temp = temp.substring(0,temp.length()-2);
+	}%][%=temp%]) {
+
+	}
+
+	[%}%]
+	
+	[%for (method in controller.methods) {%]
+	private [%=method.dataType.name%] [%=method.name%]([%var temp = "" ;
+	for (param in method.paramters) {
+		temp = temp + param.dataType.name + " " + param.name + ", ";
+	}
+	if (method.paramters.notEmpty()) {
+		temp = temp.substring(0,temp.length()-2);
+	}%][%=temp%]) {
+
+	}
+
+	[%}%]
+}

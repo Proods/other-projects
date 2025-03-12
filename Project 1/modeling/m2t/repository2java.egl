@@ -1,0 +1,11 @@
+package eng2.[%=microservice.name.replace("-microservice","").replace("-",".")%]s.repositories;
+
+import eng2.trending.hashtags.domain.[%=repository.domain.name%];
+import io.micronaut.data.annotation.Repository;
+import io.micronaut.data.repository.CrudRepository;
+
+
+@Repository
+public interface [%=repository.name%] extends CrudRepository<[%=repository.domain.name%],Long>{
+
+}

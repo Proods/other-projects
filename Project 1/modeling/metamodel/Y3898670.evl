@@ -1,0 +1,250 @@
+context Model {
+
+	critique atLeastOneMicroservice {
+
+		check: self.microservices.size() >= 1
+
+		fix {
+
+			title: "Add Microservice"
+
+			do {
+
+				self.microservices.add(new Microservice);
+			}
+		}
+	}
+}
+
+context Microservice {
+
+	constraint atLeastOneController {
+
+		check: self.controllers.size() >= 1
+
+		message: "Microservice must have at least one resouce!"
+	}
+}
+
+context Repository {
+
+	critique NameEndsWithRepository {
+
+		check: self.name.endsWith("Repository")
+
+		fix {
+
+			title: "Rename to \"" + self.name + "Repository\""
+
+			do {
+				self.name = self.name + "Repository";
+			}
+		}
+	}
+}
+
+context DTO {
+
+	critique NameEndsWithDTO {
+
+		check: self.name.endsWith("DTO")
+
+		fix {
+
+			title: "Rename to \"" + self.name + "DTO\""
+
+			do {
+				self.name = self.name + "DTO";
+			}
+		}
+	}
+}
+
+context Stream {
+
+	critique NameEndsWithStream {
+
+		check: self.name.endsWith("Stream")
+
+		fix {
+
+			title: "Rename to \"" + self.name + "Stream\""
+
+			do {
+				self.name = self.name + "Stream";
+			}
+		}
+	}
+}
+
+context Singleton {
+
+	constraint atLeastOnePublisher {
+
+		check : self.publisher.size() >= 1
+
+		message: "Stream needs to have at least one publisher!"
+	}
+
+	constraint atLeastOneSubscriber {
+
+		check : self.subscriber.size() >= 1
+
+		message: "Stream needs to have at least one subscriber!"
+	}
+}
+
+context Producer {
+
+	critique NameEndsWithProducer {
+
+		check: self.name.endsWith("Producer")
+
+		fix {
+
+			title: "Rename to \"" + self.name + "Producer\""
+
+			do {
+				self.name = self.name + "Producer";
+			}
+		}
+	}
+}
+
+context Consumer {
+
+	critique NameEndsWithConsumer {
+
+		check: self.name.endsWith("Consumer")
+
+		fix {
+
+			title: "Rename to \"" + self.name + "Consumer\""
+
+			do {
+				self.name = self.name + "Consumer";
+			}
+		}
+	}
+}
+
+context Event {
+
+	critique inLeastOneStream {
+
+		check: self.singletons.size() >= 1
+
+		fix {
+
+			title: "Event should be used in least one stream"
+
+			do {}
+		}
+	}
+}
+
+context Controller {
+
+	constraint atLeastOneResource {
+
+		check: self.resources.size() >= 1 
+
+		message: "Microservice must have at least one resouce!"
+	}
+	
+	critique NameEndsWithController {
+
+		check: self.name.endsWith("Controller")
+
+		fix {
+
+			title: "Rename to \"" + self.name + "Controller\""
+
+			do {
+				self.name = self.name + "Controller";
+			}
+		}
+	}
+	
+	critique PathStartsWithBS {
+
+		check: self.path.startsWith("/")
+
+		fix {
+
+			title: "Rename to \"" + "/" + self.path + "\""
+
+			do {
+				self.path = "/" + self.path;
+			}
+		}
+	}
+}
+
+context Resource {
+	
+	critique PathStartsWithBS {
+
+		check: self.path.startsWith("/")
+
+		fix {
+
+			title: "Rename to \"" + "/" + self.path + "\""
+
+			do {
+				self.path = "/" + self.path;
+			}
+		}
+	}
+}
+
+context Class {
+	
+	critique NameStartsWithUC {
+
+		check: self.name = self.name.firstToUpperCase()
+
+		fix {
+
+			title: "Rename to \"" + self.name.firstToUpperCase() + "\""
+
+			do {
+				self.name = self.name.firstToUpperCase();
+			}
+		}
+	}
+}
+
+context Method {
+	
+	critique NameStartsWithLC {
+
+		check: self.name = self.name.firstToLowerCase()
+
+		fix {
+
+			title: "Rename to \"" + self.name.firstToLowerCase() + "\""
+
+			do {
+				self.name = self.name.firstToLowerCase();
+			}
+		}
+	}
+}
+
+context Attribute {
+	
+	critique NameStartsWithLC {
+
+		check: self.name = self.name.firstToLowerCase()
+
+		fix {
+
+			title: "Rename to \"" + self.name.firstToLowerCase() + "\""
+
+			do {
+				self.name = self.name.firstToLowerCase();
+			}
+		}
+	}
+}
